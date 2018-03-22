@@ -15,4 +15,5 @@
     <string name="share_search">Share search to: </string>
     <string name="confirm_message">Are you sure you want to delete the search \"%s\"?</string>
     <string name="delete">Delete</string>
+    <string name="tag_searches">Tagged Searches</string>
 </resources>

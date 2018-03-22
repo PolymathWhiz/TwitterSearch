@@ -21,9 +21,18 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
             android:textStyle="bold"
-            android:text="TextView" />
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="@string/tag_searches" />
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"/>
     </LinearLayout>
 
     <android.support.design.widget.TextInputLayout

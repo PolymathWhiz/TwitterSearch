@@ -11,6 +11,9 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -55,6 +58,23 @@ public class MainActivity extends AppCompatActivity {
         tags = new ArrayList<>(savedSearches.getAll().keySet());
 
         Collections.sort(tags, String.CASE_INSENSITIVE_ORDER);
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        /**
+         * TODO create SearchAdapter Class
+         */
+        adapter = new SearchesAdapter(tags, itemClickListener, itemOnLongClickListener);
+
+        recyclerView.setAdapter(adapter);
+
+        // change this
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, 1));
+
+        saveFloatingActionButton = findViewById(R.id.fab);
+        saveFloatingActionButton.setOnClickListener(saveButtonListener);
+        updateSaveFab();
 
     }
 
@@ -173,5 +193,27 @@ public class MainActivity extends AppCompatActivity {
         shareIntent.setType("text/plain");
 
         startActivity(Intent.createChooser(shareIntent, getString(R.string.share_search)));
+    }
+
+    private void deleteSearch(final String tag) {
+        AlertDialog.Builder confirmBuilder = new AlertDialog.Builder(MainActivity.this);
+
+        confirmBuilder.setMessage(getString(R.string.confirm_message, tag));
+        // sets the -ve button
+        confirmBuilder.setNegativeButton(getString(R.string.cancel), null);
+
+        // sets the +ve button
+        confirmBuilder.setPositiveButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                tags.remove(tag);
+                SharedPreferences.Editor prefEditor = savedSearches.edit();
+                prefEditor.remove(tag);
+                prefEditor.apply();
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+        confirmBuilder.create().show();
     }
 }

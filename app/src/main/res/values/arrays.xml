@@ -4,5 +4,6 @@
         <item>Share</item>
         <item>Edit</item>
         <item>Delete</item>
+        <item>Share on Facebook</item>
     </string-array>
 </resources>

@@ -1,64 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.maplerad.twittersearch.MainActivity"
-    tools:showIn="@layout/activity_main">
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_main"
+    tools:context=".MainActivity">
 
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:hint="@string/twitter_account"
+            android:id="@+id/twitter_account_edttxt"
+            android:singleLine="true"/>
+
+    </android.support.design.widget.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@id/tagTextInputLayout">
+        android:layout_height="wrap_content">
 
-
-        <TextView
-            android:id="@+id/textView"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:textStyle="bold"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:text="@string/tag_searches" />
+            android:imeOptions="actionDone"
+            android:hint="@string/post_id"
+            android:id="@+id/post_ID_edttxt"
+            android:singleLine="true"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:id="@+id/recyclerView"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View replies to specific tweet"
+            android:id="@+id/btnFeature2"
+            android:layout_below="@+id/tagTextInputLayout"
+            android:layout_alignParentStart="true"
+            android:onClick="goToReplies"
+            android:layout_weight="1"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Trending"
+            android:id="@+id/btnFeature1"
+            android:layout_below="@+id/tagTextInputLayout"
+            android:layout_alignParentStart="true"
+            android:onClick="gotoTrends"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/queryTextInputLayout">
 
-        <android.support.design.widget.TextInputEditText
-            android:imeOptions="actionNext"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/query_prompt" />
+            android:imeOptions="actionNext"
+            android:hint="@string/query_prompt"
+            android:singleLine="true"/>
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tagTextInputLayout"
-        android:layout_below="@id/queryTextInputLayout">
+        android:layout_below="@id/queryTextInputLayout"
+        android:id="@+id/tagTextInputLayout">
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:imeOptions="actionDone"
+            android:hint="@string/tag_prompt"
+            android:singleLine="true"/>
+
+    </android.support.design.widget.TextInputLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner_language"
+            android:spinnerMode="dropdown"
+            android:layout_weight="1">
+        </Spinner>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/filterSpinner"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6"
+        android:background="@color/colorTaggedSearches"
+        android:layout_below="@+id/btnFeature1"
+        android:id="@+id/linearLayout">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:imeOptions="actionDone"
-            android:hint="@string/tag_prompt"/>
-    </android.support.design.widget.TextInputLayout>
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/tagged_searches"
+            android:id="@+id/textView"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"/>
 
-</RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/recyclerView"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"/>
+    </LinearLayout>
+
+</LinearLayout>

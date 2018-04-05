@@ -5,7 +5,7 @@
     <string name="query_prompt">Enter twitter search query here</string>
     <string name="tag_prompt">Tag your query</string>
     <string name="save_description">Touch this button to save your tag search</string>
-    <string name="search_URL">https://mobile.twitter.com/explore</string>
+    <!--<string name="search_URL">https://mobile.twitter.com/explore</string>-->
     <string name="share_edit_delete_title">
         Share, Edit or Delete the search tagged as \"%s\"
     </string>
@@ -16,4 +16,12 @@
     <string name="confirm_message">Are you sure you want to delete the search \"%s\"?</string>
     <string name="delete">Delete</string>
     <string name="tag_searches">Tagged Searches</string>
+    <string name="title_activity_translate">TranslateActivity</string>
+    <string name="twitter_account">Twitter account to see replies to a specific tweet</string>
+    <string name="post_id">Post ID (leave both blank for example)</string>
+    <string name="trending">Currently Trending</string>
+    <string name="search_URL">http://mobile.twitter.com/search?q=</string>
+    <string name="fb_search_URL">http://facebook.com/sharer/sharer.php?u=https%3A//mobile.twitter.com/search?q=</string>
+    <string name="translate_search_URL">http://twitter.com/search?q=</string>
+    <string name="tagged_searches">Tagged Searches</string>
 </resources>
